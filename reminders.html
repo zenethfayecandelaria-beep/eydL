@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Musée de Her — Reminders of You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="rainCanvas"></canvas>
+
+  <nav class="museum-nav">
+    <a href="index.html" class="nav-brand">Musée de Her</a>
+    <ul class="nav-links">
+      <li><a href="index.html">VIP Entrance</a></li>
+      <li><a href="reminders.html" class="active">Reminders of You</a></li>
+      <li><a href="library.html">The Library</a></li>
+      <li><a href="unspoken.html">Unspoken Wing</a></li>
+      <li><a href="listening.html">Listening Lounge</a></li>
+      <li><a href="vault.html">About The Curator</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-container">
+    <div class="section-header">
+      <span class="section-tag">EXHIBIT WING A</span>
+      <h1 class="section-title">Things That Remind Me of You</h1>
+      <p class="section-desc">Everyday sights, sounds, and simple moments that bring your smile into my mind.</p>
+    </div>
+
+    <div class="reminders-grid">
+      <div class="reminder-card" onclick="openModal('Warm Taho Mornings', 'Every time I saw a taho vendor or taste warm arnibal, I immediately think of you .', '📷 REMINDER NO. 01')">
+        <div class="image-frame">
+          <img src="taho.jpg" alt="Warm Taho" onerror="this.src='https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&q=80'">
+        </div>
+        <div class="card-details">
+          <span class="card-tag">MORNING TRADITIONS</span>
+          <h3>TAHO</h3>
+          <p>Click to read why this reminds me of you.</p>
+        </div>
+      </div>
+
+      <div class="reminder-card" onclick="openModal('Violin', 'Whenever classical music plays or I see a violin case, I am reminded by the time when you told me you used to play violin and its been a year since you last played it.', '📷 REMINDER NO. 02')">
+        <div class="image-frame">
+          <img src="images/violin.jpg" alt="Violin" onerror="this.src='https://images.unsplash.com/photo-1612225330812-01a9c6b355ec?w=500&q=80'">
+        </div>
+        <div class="card-details">
+          <span class="card-tag">MUSIC & HARMONY</span>
+          <h3>Instrument that reminds me of you</h3>
+          <p>Click to read why this reminds me of you.</p>
+        </div>
+      </div>
+
+      <div class="reminder-card" onclick="openModal('Sleepy Cats in Sunbeams', 'Seeing a cute cat anywhere instantly makes me want to send you a picture.', '📷 REMINDER NO. 03')">
+        <div class="image-frame">
+          <img src="images/cat.jpg" alt="Cutie Cat" onerror="this.src='https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500&q=80'">
+        </div>
+        <div class="card-details">
+          <span class="card-tag">SOFT SOLACE</span>
+          <h3>Cutie Cat</h3>
+          <p>Click to read why this reminds me of you.</p>
+        </div>
+      </div>
+
+      <div class="reminder-card" onclick="openModal('Rain On The Window Pane', 'When the sky turns gray and rain starts falling, my first instinct is always to check up on you.', '📷 REMINDER NO. 04')">
+        <div class="image-frame">
+          <img src="images/rain.jpg" alt="Rainy Window" onerror="this.src='https://images.unsplash.com/photo-1519692933481-e162a57d6721?w=500&q=80'">
+        </div>
+        <div class="card-details">
+          <span class="card-tag">COZY WEATHER</span>
+          <h3>Rainy Afternoons</h3>
+          <p>Click to read why this reminds me of you.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="museumModal" class="modal-backdrop" onclick="if(event.target.id==='museumModal')closeModalDirect()">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModalDirect()">&times;</button>
+      <span id="modalMeta" class="card-tag">EXHIBIT DETAILS</span>
+      <h2 id="modalTitle" style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin: 10px 0;">Title</h2>
+      <p id="modalBody" style="color: var(--text-muted); line-height: 1.7;">Body text...</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

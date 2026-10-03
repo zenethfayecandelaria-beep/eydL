@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Musée de Her — About The Curator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .curator-profile-frame {
+      width: 170px;
+      height: 170px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      border: 2px solid var(--gold-accent);
+      padding: 5px;
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+      position: relative;
+    }
+
+    .curator-profile-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      background: #1a1d24;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="rainCanvas"></canvas>
+
+  <nav class="museum-nav">
+    <a href="index.html" class="nav-brand">Musée de Her</a>
+    <ul class="nav-links">
+      <li><a href="index.html">VIP Entrance</a></li>
+      <li><a href="reminders.html">Reminders of You</a></li>
+      <li><a href="library.html">The Library</a></li>
+      <li><a href="unspoken.html">Unspoken Wing</a></li>
+      <li><a href="listening.html">Listening Lounge</a></li>
+      <li><a href="vault.html" class="active">About The Curator</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-container">
+    <div class="section-header">
+      <span class="section-tag">CURATOR'S OFFICE & VAULT</span>
+      <h1 class="section-title">About The Creator</h1>
+      <p class="section-desc">The guy who coded and curated this entire museum for Aidelle.</p>
+    </div>
+
+    <div style="background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: 16px; padding: 40px; max-width: 750px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center;">
+      
+      <!-- LALAGYAN NG LARAWAN MO (CURATOR PHOTO) -->
+      <div class="curator-profile-frame">
+        <img src="images/curator.jpg" alt="The Curator" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&q=80'">
+      </div>
+
+      <span class="card-tag">HEAD CURATOR & DEVELOPER</span>
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--gold-accent); margin: 8px 0 20px;">For Aidelle, Mi Amor</h2>
+
+      <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; text-align: left;">
+        Hi Aidelle! I built this digital museum line of code by line of code just to give you something as unique, thoughtful, and memorable as you are to me.
+      </p>
+
+      <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; text-align: left;">
+        Every room, every water lily petal, and every song here was prepared with so much love. Happy Birthday, mi amor! Thank you for being you.
+      </p>
+
+      <div style="border-top: 1px dashed var(--border-gold); padding-top: 25px; margin-top: 30px;">
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; color: var(--gold-accent);">
+          " Happy Birthday Aidelle, Mi Amor! 🎂✨🪷 "
+        </span>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

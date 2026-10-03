@@ -1,0 +1,657 @@
+/* Base Variables & Dark Museum Theme */
+:root {
+  --bg-dark: #0d0f12;
+  --bg-card: rgba(22, 26, 33, 0.88);
+  --gold-accent: #d4af37;
+  --gold-glow: rgba(212, 175, 55, 0.25);
+  --text-primary: #e2ded7;
+  --text-muted: #a0a5ad;
+  --border-gold: rgba(212, 175, 55, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+#rainCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+}
+
+/* Navigation Bar */
+.museum-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 30px;
+  background: rgba(13, 15, 18, 0.92);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--gold-accent);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.82rem;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--gold-accent);
+  background: var(--gold-glow);
+  border: 1px solid var(--border-gold);
+}
+
+/* Page Containers */
+.page-container {
+  padding: 120px 20px 100px;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-tag {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: var(--gold-accent);
+  display: block;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  margin: 8px 0;
+}
+
+.section-desc {
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Landing Page / Entrance Ticket */
+.hero-entrance {
+  min-height: calc(100vh - 180px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.museum-ticket {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-accent);
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 540px;
+  width: 100%;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.ticket-header {
+  border-bottom: 1px dashed var(--border-gold);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.ticket-stamp {
+  display: inline-block;
+  border: 1px solid var(--gold-accent);
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--gold-accent);
+  margin-bottom: 12px;
+  border-radius: 20px;
+}
+
+.main-bday-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  color: var(--gold-accent);
+  line-height: 1.2;
+  margin: 10px 0;
+}
+
+.enter-btn {
+  display: inline-block;
+  width: 100%;
+  padding: 14px 28px;
+  background: var(--gold-accent);
+  color: #0d0f12;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.enter-btn:hover {
+  background: #f0c84c;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+}
+
+/* Water Lily Pond Styling */
+.pond-wrapper {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  background: #09131a;
+  border-radius: 20px;
+  border: 1px solid var(--border-gold);
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+}
+
+#pondCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#lilyContainer {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+}
+
+.water-lily-item {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.water-lily-item:hover {
+  transform: translate(-50%, -55%) scale(1.15);
+}
+
+.lily-flower {
+  font-size: 2.6rem;
+  filter: drop-shadow(0 0 12px rgba(255, 182, 193, 0.6));
+  animation: floatLily 4s ease-in-out infinite alternate;
+}
+
+.lily-flower.wish-flower {
+  filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.9));
+}
+
+@keyframes floatLily {
+  0% { transform: translateY(0px) rotate(-2deg); }
+  100% { transform: translateY(-6px) rotate(2deg); }
+}
+
+.lily-tag {
+  background: rgba(13, 15, 18, 0.85);
+  border: 1px solid var(--gold-accent);
+  color: var(--text-primary);
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+.pond-instructions {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(13, 15, 18, 0.8);
+  border: 1px solid var(--border-gold);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: var(--gold-accent);
+  pointer-events: none;
+}
+
+/* Action Buttons */
+.action-btn {
+  background: var(--gold-accent);
+  color: #0d0f12;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 0.88rem;
+}
+
+.action-btn:hover {
+  background: #f0c84c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.action-btn.secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-gold);
+}
+
+.action-btn.secondary:hover {
+  border-color: var(--gold-accent);
+  color: var(--gold-accent);
+  background: var(--gold-glow);
+}
+
+/* Wish Input Modal Elements */
+.wish-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(13, 15, 18, 0.9);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.wish-input:focus {
+  border-color: var(--gold-accent);
+  box-shadow: 0 0 10px var(--gold-glow);
+}
+
+.wish-vault-list {
+  max-height: 280px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.wish-vault-item {
+  background: rgba(22, 26, 33, 0.9);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.wish-vault-item .wish-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  color: #fff;
+}
+
+.wish-vault-item .wish-time {
+  font-size: 0.7rem;
+  color: var(--gold-accent);
+  margin-top: 4px;
+}
+
+/* Photo Gallery Grid */
+.reminders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.reminder-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.reminder-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold-accent);
+  box-shadow: 0 10px 25px var(--gold-glow);
+}
+
+.image-frame {
+  width: 100%;
+  height: 200px;
+  background: #000;
+  overflow: hidden;
+}
+
+.image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.reminder-card:hover .image-frame img {
+  transform: scale(1.08);
+}
+
+.card-details {
+  padding: 18px;
+}
+
+.card-tag {
+  font-size: 0.75rem;
+  color: var(--gold-accent);
+  letter-spacing: 1px;
+}
+
+.card-details h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  margin: 4px 0 8px;
+}
+
+.card-details p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* Book Library Section */
+.library-hero {
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 30px;
+  padding: 35px;
+}
+
+.book-cover-large {
+  width: 100%;
+  height: 350px;
+  background: #111;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+}
+
+.book-cover-large img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book-details h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.3rem;
+  color: var(--gold-accent);
+  margin-bottom: 8px;
+}
+
+.book-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  border-left: 2px solid var(--gold-accent);
+  padding-left: 18px;
+  margin: 18px 0;
+}
+
+/* Floating Music Player Widget */
+.music-widget {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(22, 26, 33, 0.95);
+  border: 1px solid var(--gold-accent);
+  border-radius: 30px;
+  padding: 6px 15px 6px 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.music-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.music-icon {
+  font-size: 1.2rem;
+  background: var(--gold-glow);
+  padding: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--border-gold);
+}
+
+.music-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.music-label {
+  font-size: 0.65rem;
+  color: var(--gold-accent);
+  letter-spacing: 1px;
+}
+
+#musicTitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  max-width: 170px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.next-track-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 5px;
+  transition: transform 0.2s;
+}
+
+.next-track-btn:hover {
+  transform: scale(1.2);
+}
+
+.music-btn.playing .music-icon {
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* Modals */
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  background: #161a21;
+  border: 1px solid var(--gold-accent);
+  border-radius: 12px;
+  padding: 35px;
+  max-width: 520px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px; right: 20px;
+  background: none; border: none;
+  color: var(--text-muted);
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.bouquet-card {
+  border: 1px dashed var(--border-gold);
+  padding: 25px;
+  border-radius: 12px;
+  background: rgba(13, 15, 18, 0.6);
+}
+
+.ribbon-tag {
+  display: inline-block;
+  background: var(--gold-glow);
+  border: 1px solid var(--border-gold);
+  color: var(--gold-accent);
+  font-size: 0.8rem;
+  padding: 4px 14px;
+  border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .library-hero { grid-template-columns: 1fr; }
+}
+
+/* ==========================================
+   MOBILE & RESPONSIVE DESIGN ENHANCEMENTS
+   ========================================== */
+
+/* 1. Gagawing scrollable ang Navigation Bar sa Cellphone */
+.museum-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: rgba(10, 12, 16, 0.9);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  overflow-x: auto; /* Pinapayagan ang horizontal scroll sa mobile */
+  white-space: nowrap;
+  padding-bottom: 5px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none; /* Itatago ang scrollbar para malinis tignan */
+}
+
+/* 2. Responsiveness para sa mga Cards at Layout */
+@media (max-width: 768px) {
+  .museum-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .nav-links {
+    width: 100%;
+  }
+
+  .page-container {
+    padding: 20px 15px;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .reminder-card {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  /* Active/Touch effect para sa daliri sa cellphone */
+  .reminder-card:active {
+    transform: scale(0.97);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+  }
+
+  /* Modal fitting sa mobile screens */
+  .modal-box {
+    width: 90%;
+    padding: 25px 20px;
+    margin: 20px auto;
+  }
+}

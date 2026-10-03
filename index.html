@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Musée de Her — Happy Birthday Aidelle, Mi Amor!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="rainCanvas"></canvas>
+
+  <nav class="museum-nav">
+    <a href="#" class="nav-brand" onclick="switchSection('entrance')">Musée de Her</a>
+    <ul class="nav-links">
+      <li><a href="#" id="nav-entrance" class="active" onclick="switchSection('entrance')">VIP Entrance</a></li>
+      <li><a href="#" id="nav-pond" onclick="switchSection('pond')">🪷 Water Lily Pond</a></li>
+      <li><a href="#" id="nav-reminders" onclick="switchSection('reminders')">Reminders of You</a></li>
+      <li><a href="#" id="nav-library" onclick="switchSection('library')">The Library</a></li>
+      <li><a href="#" id="nav-unspoken" onclick="switchSection('unspoken')">Unspoken Wing</a></li>
+      <li><a href="#" id="nav-listening" onclick="switchSection('listening')">Listening Lounge</a></li>
+      <li><a href="#" id="nav-vault" onclick="switchSection('vault')">About The Curator</a></li>
+    </ul>
+  </nav>
+
+  <!-- SECTION 1: ENTRANCE LANDING PAGE -->
+  <main id="sec-entrance" class="page-container hero-entrance">
+    <div class="museum-ticket">
+      <div class="ticket-header">
+        <span class="ticket-stamp">VIP BIRTHDAY ADMISSION</span>
+        <h1 class="main-bday-title">HAPPY BIRTHDAY AIDELLE, MI AMOR! 🎉</h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">A Private Digital Exhibition & Water Lily Garden Dedicated Entirely to You</p>
+      </div>
+
+      <div class="ticket-body" style="text-align: left; font-size: 0.95rem; color: var(--text-primary);">
+        <p style="margin-bottom: 12px;"><strong>Admit One:</strong> Aidelle (The Most Special Person)</p>
+        <p style="margin-bottom: 12px;"><strong>Curator:</strong> Your Number One Admirer</p>
+        <p style="margin-bottom: 12px;"><strong>Curator's Note:</strong> Welcome, mi amor. This website is created just for you. Happy Birthday!</p>
+      </div>
+
+      <button class="enter-btn" onclick="switchSection('pond')">EXPLORE WATER LILY POND & EXHIBITION ➔</button>
+    </div>
+  </main>
+
+  <!-- SECTION 2: DIGITAL WATER LILY POND -->
+  <main id="sec-pond" class="page-container" style="display: none;">
+    <div class="section-header">
+      <span class="section-tag">SPECIAL INTERACTIVE EXHIBIT</span>
+      <h1 class="section-title">A Bouquet of Water Lilies for Aidelle</h1>
+      <p class="section-desc">Tap or click anywhere on the twilight pond surface to bloom new water lilies or release a birthday wish into the stars!</p>
+      
+      <div style="margin-top: 20px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <button class="action-btn" onclick="openWishModal()">✨ Make a Birthday Wish</button>
+        <button class="action-btn secondary" onclick="openWishVault()">📜 View Wish Vault (<span id="wishCount">0</span>)</button>
+        <button class="action-btn secondary" onclick="openBouquetModal()">💐 View Tied Bouquet Card</button>
+      </div>
+    </div>
+
+    <div class="pond-wrapper">
+      <canvas id="pondCanvas"></canvas>
+      <div id="lilyContainer"></div>
+      <div class="pond-instructions">✨ Tap the pond to bloom water lilies with love notes!</div>
+    </div>
+  </main>
+
+  <!-- SECTION 3: REMINDERS OF YOU -->
+  <main id="sec-reminders" class="page-container" style="display: none;">
+    <div class="section-header">
+      <span class="section-tag">EXHIBIT WING A</span>
+      <h1 class="section-title">Things That Remind Me of You</h1>
+      <p class="section-desc">Everyday sights, sounds, and simple moments that bring your smile into my mind.</p>
+    </div>
+
+    <div class="reminders-grid">
+      <div class="reminder-card" onclick="openModal('Warm Taho Mornings', 'Every time I hear a taho vendor outside or taste warm arnibal, I think of your happy face on quiet mornings.', '📷 REMINDER NO. 01')">
+        <div class="image-frame">
+          <img src="images/taho.jpg" alt="Warm Taho" onerror="this.src='https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&q=80'">
+        </div>
+        <div class="card-details">
+          <span class="card-tag">MORNING TRADITIONS</span>
+          <h3>Warm Taho & Sweet Arnibal</h3>
+          <p>Click to read why this reminds me of you.</p>
+        </div>
+      </div>
+
+      <div class="reminder-card" onclick="openModal('Violin Sheet Music & Strings', 'Whenever classical music plays or I see a violin case, I am reminded of how talented and dedicated you are.', '📷 REMINDER NO. 02')">
+        <div class="image-frame">
+          <img src="images/violin.jpg" alt="Violin" onerror="this.src='https://images.unsplash.com/photo-1612225330812-01a9c6b355ec?w=500&q=80'">
+        </div>
+        <div class="card-details">
+          <span class="card-tag">MUSIC & HARMONY</span>
+          <h3>Violin Melodies</h3>
+          <p>Click to read why this reminds me of you.</p>
+        </div>
+      </div>
+
+      <div class="reminder-card" onclick="openModal('Sleepy Cats in Sunbeams', 'Seeing a cute cat curled up anywhere instantly makes me want to send you a picture.', '📷 REMINDER NO. 03')">
+        <div class="image-frame">
+          <img src="images/cat.jpg" alt="Cozy Cat" onerror="this.src='https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500&q=80'">
+        </div>
+        <div class="card-details">
+          <span class="card-tag">SOFT SOLACE</span>
+          <h3>Sleeping Cats</h3>
+          <p>Click to read why this reminds me of you.</p>
+        </div>
+      </div>
+
+      <div class="reminder-card" onclick="openModal('Rain On The Window Pane', 'When the sky turns gray and rain starts falling, my first instinct is always to check up on you.', '📷 REMINDER NO. 04')">
+        <div class="image-frame">
+          <img src="images/rain.jpg" alt="Rainy Window" onerror="this.src='https://images.unsplash.com/photo-1519692933481-e162a57d6721?w=500&q=80'">
+        </div>
+        <div class="card-details">
+          <span class="card-tag">COZY WEATHER</span>
+          <h3>Rainy Afternoons</h3>
+          <p>Click to read why this reminds me of you.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- SECTION 4: THE LIBRARY -->
+  <main id="sec-library" class="page-container" style="display: none;">
+    <div class="section-header">
+      <span class="section-tag">SPECIAL EXHIBIT</span>
+      <h1 class="section-title">The Book Where It All Started</h1>
+      <p class="section-desc">Dedicated to the story, the pages, and the conversation that opened the door to us.</p>
+    </div>
+
+    <div class="library-hero">
+      <div class="book-cover-large">
+        <img src="images/book-cover.jpg" alt="Our Special Book" onerror="this.src='https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&q=80'">
+      </div>
+      <div class="book-details">
+        <span class="card-tag">CHAPTER 01 • OUR ORIGIN STORY</span>
+        <h2>Our Favorite Chapter</h2>
+        <p style="color: var(--text-muted);">Dedicated to Aidelle</p>
+
+        <div class="book-quote">
+          "Every story has a beginning, but talking with you made every line feel like home."
+        </div>
+
+        <p style="line-height: 1.8;">
+          <strong>Curator's Memory:</strong> From exchanging thoughts about our favorite stories to realizing how seamlessly we fit into each other's lives, every page reminds me of how lucky I am to have you.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- SECTION 5: UNSPOKEN WING -->
+  <main id="sec-unspoken" class="page-container" style="display: none;">
+    <div class="section-header">
+      <span class="section-tag">EXHIBIT WING C</span>
+      <h1 class="section-title">The Unspoken Wing</h1>
+      <p class="section-desc">Things I don't always say out loud, but feel every single day.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+      <div class="reminder-card" style="padding: 25px;" onclick="openModal('Your Laugh', 'There is a specific way you laugh when you are genuinely happy, Aidelle, and it is my absolute favorite sound in the world.', '📜 LETTER 01')">
+        <span class="card-tag">UNSPOKEN THOUGHT 01</span>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin: 10px 0;">On Your Laugh</h3>
+        <p style="color: var(--text-muted);">Click to read this note...</p>
+      </div>
+
+      <div class="reminder-card" style="padding: 25px;" onclick="openModal('Being Proud of You', 'I am always so proud of how hard you work and how deeply you care for everyone around you, mi amor.', '📜 LETTER 02')">
+        <span class="card-tag">UNSPOKEN THOUGHT 02</span>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin: 10px 0;">On Admiration</h3>
+        <p style="color: var(--text-muted);">Click to read this note...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- SECTION 6: LISTENING LOUNGE -->
+  <main id="sec-listening" class="page-container" style="display: none;">
+    <div class="section-header">
+      <span class="section-tag">EXHIBIT WING D</span>
+      <h1 class="section-title">The Listening Lounge</h1>
+      <p class="section-desc">A curated collection of songs for Aidelle, mi amor.</p>
+    </div>
+
+    <div style="max-width: 700px; margin: 0 auto; background: var(--bg-card); padding: 25px; border-radius: 16px; border: 1px solid var(--border-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0" width="100%" height="382" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+  </main>
+
+  <!-- SECTION 7: ABOUT THE CURATOR -->
+  <main id="sec-vault" class="page-container" style="display: none;">
+    <div class="section-header">
+      <span class="section-tag">CURATOR'S OFFICE & VAULT</span>
+      <h1 class="section-title">About The Creator</h1>
+      <p class="section-desc">The guy who coded and curated this entire museum for Aidelle.</p>
+    </div>
+
+    <div style="background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: 16px; padding: 40px; max-width: 750px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <span class="card-tag">HEAD CURATOR</span>
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--gold-accent); margin-top: 5px;">For Aidelle, Mi Amor</h2>
+      </div>
+
+      <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px;">
+        Hi Aidelle! I built this digital museum line of code by line of code just to give you something as unique, thoughtful, and memorable as you are to me.
+      </p>
+
+      <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px;">
+        Every room, every water lily petal, and every song here was prepared with so much love. Happy Birthday, mi amor! Thank you for being you.
+      </p>
+
+      <div style="border-top: 1px dashed var(--border-gold); padding-top: 25px; margin-top: 30px; text-align: center;">
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; color: var(--gold-accent);">
+          " Happy Birthday Aidelle, Mi Amor! 🎂✨🪷 "
+        </span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Floating Music Player Widget -->
+  <div class="music-widget">
+    <button id="musicToggleBtn" class="music-btn">
+      <span class="music-icon">🎵</span>
+      <div class="music-info">
+        <span class="music-label">CURATOR'S SOUNDTRACK:</span>
+        <strong id="musicTitle">Mac DeMarco — The Most Beautiful Thing</strong>
+      </div>
+    </button>
+    <button onclick="nextTrack()" class="next-track-btn" title="Switch Song">⏭️</button>
+  </div>
+
+  <!-- General Modal Window -->
+  <div id="museumModal" class="modal-backdrop" onclick="if(event.target.id==='museumModal')closeModalDirect()">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModalDirect()">&times;</button>
+      <span id="modalMeta" class="card-tag">EXHIBIT DETAILS</span>
+      <h2 id="modalTitle" style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin: 10px 0;">Title</h2>
+      <p id="modalBody" style="color: var(--text-muted); line-height: 1.7;">Body text...</p>
+    </div>
+  </div>
+
+  <!-- Make A Wish Modal -->
+  <div id="wishModal" class="modal-backdrop" onclick="if(event.target.id==='wishModal')closeWishModal()">
+    <div class="modal-box" style="text-align: center;">
+      <button class="modal-close" onclick="closeWishModal()">&times;</button>
+      <span class="card-tag">✨ BIRTHDAY WISH GENERATOR</span>
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--gold-accent); margin: 10px 0;">Make a Wish, Aidelle!</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">Type your birthday wish below. It will bloom as a glowing Golden Wish Water Lily in the pond!</p>
+      
+      <input type="text" id="wishInput" class="wish-input" placeholder="e.g. A year full of happiness and beautiful music..." maxlength="100">
+      
+      <button class="action-btn" style="width: 100%;" onclick="submitWish()">🌟 Release Wish Into The Pond</button>
+    </div>
+  </div>
+
+  <!-- Wish Vault Modal -->
+  <div id="wishVaultModal" class="modal-backdrop" onclick="if(event.target.id==='wishVaultModal')closeWishVault()">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeWishVault()">&times;</button>
+      <span class="card-tag">📜 AIDELLE'S BIRTHDAY WISHES</span>
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--gold-accent); margin: 10px 0;">Wish Vault</h2>
+      <div id="wishVaultList" class="wish-vault-list"></div>
+    </div>
+  </div>
+
+  <!-- Bouquet Modal Window -->
+  <div id="bouquetModal" class="modal-backdrop" onclick="if(event.target.id==='bouquetModal')closeBouquetModal()">
+    <div class="modal-box" style="text-align: center; max-width: 600px;">
+      <button class="modal-close" onclick="closeBouquetModal()">&times;</button>
+
+      <div class="bouquet-card">
+        <span class="card-tag">DIGITAL FLORAL PRESENTATION</span>
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--gold-accent); margin: 10px 0;">Water Lily Bouquet for Aidelle</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">Freshly bloomed from the pond of Musée de Her.</p>
+
+        <div style="font-size: 3.5rem; margin: 15px 0; filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));">
+          🪷🌸🪷✨🪷
+        </div>
+
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-style: italic; color: #fff; line-height: 1.6; margin: 20px 0;">
+          "Like water lilies that bloom serenely on calm waters, you bring light, grace, and beauty into my life every single day. Happy Birthday, mi amor!"
+        </p>
+
+        <div class="ribbon-tag">🎀 Bound with Infinite Love • Birthday Edition</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

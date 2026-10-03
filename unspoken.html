@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Musée de Her — Unspoken Wing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="rainCanvas"></canvas>
+
+  <nav class="museum-nav">
+    <a href="index.html" class="nav-brand">Musée de Her</a>
+    <ul class="nav-links">
+      <li><a href="index.html">VIP Entrance</a></li>
+      <li><a href="reminders.html">Reminders of You</a></li>
+      <li><a href="library.html">The Library</a></li>
+      <li><a href="unspoken.html" class="active">Unspoken Wing</a></li>
+      <li><a href="listening.html">Listening Lounge</a></li>
+      <li><a href="vault.html">About The Curator</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-container">
+    <div class="section-header">
+      <span class="section-tag">EXHIBIT WING C</span>
+      <h1 class="section-title">The Unspoken Wing</h1>
+      <p class="section-desc">Things I don't always say out loud, but feel every single day.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+      <div class="reminder-card" style="padding: 25px;" onclick="openModal('Your Laugh', 'There is a specific way you laugh when you are genuinely happy, Aidelle, and it is my absolute favorite sound in the world.', '📜 LETTER 01')">
+        <span class="card-tag">UNSPOKEN THOUGHT 01</span>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin: 10px 0;">On Your Laugh</h3>
+        <p style="color: var(--text-muted);">Click to read this note...</p>
+      </div>
+
+      <div class="reminder-card" style="padding: 25px;" onclick="openModal('Being Proud of You', 'I am always so proud of how hard you work and how deeply you care for everyone around you, mi amor.', '📜 LETTER 02')">
+        <span class="card-tag">UNSPOKEN THOUGHT 02</span>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin: 10px 0;">On Admiration</h3>
+        <p style="color: var(--text-muted);">Click to read this note...</p>
+      </div>
+    </div>
+  </main>
+
+  <div id="museumModal" class="modal-backdrop" onclick="if(event.target.id==='museumModal')closeModalDirect()">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModalDirect()">&times;</button>
+      <span id="modalMeta" class="card-tag">EXHIBIT DETAILS</span>
+      <h2 id="modalTitle" style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin: 10px 0;">Title</h2>
+      <p id="modalBody" style="color: var(--text-muted); line-height: 1.7;">Body text...</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

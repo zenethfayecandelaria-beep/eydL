@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Musée de Her — The Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="rainCanvas"></canvas>
+
+  <nav class="museum-nav">
+    <a href="index.html" class="nav-brand">Musée de Her</a>
+    <ul class="nav-links">
+      <li><a href="index.html">VIP Entrance</a></li>
+      <li><a href="reminders.html">Reminders of You</a></li>
+      <li><a href="library.html" class="active">The Library</a></li>
+      <li><a href="unspoken.html">Unspoken Wing</a></li>
+      <li><a href="listening.html">Listening Lounge</a></li>
+      <li><a href="vault.html">About The Curator</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-container">
+    <div class="section-header">
+      <span class="section-tag">SPECIAL EXHIBIT</span>
+      <h1 class="section-title">The Book Where It All Started</h1>
+      <p class="section-desc">Dedicated to the story, the pages, and the conversation that opened the door to us.</p>
+    </div>
+
+    <div class="library-hero">
+      <div class="book-cover-large">
+        <img src="ha.png" alt="ha" onerror="this.src='https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&q=80'">
+      </div>
+      <div class="book-details">
+        <span class="card-tag">CHAPTER 01 • OUR ORIGIN STORY</span>
+        <h2>Our Favorite Chapter</h2>
+        <p style="color: var(--text-muted);">Dedicated to Aidelle</p>
+
+        <div class="book-quote">
+          "Every story has a beginning, but talking with you made every line feel like home."
+        </div>
+
+        <p style="line-height: 1.8;">
+          <strong>Curator's Memory:</strong> From exchanging thoughts about our favorite stories to realizing how seamlessly we fit into each other's lives, every page reminds me of how lucky I am to have you.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
